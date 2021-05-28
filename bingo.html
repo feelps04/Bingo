@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+
+<input type="submit" value="Sortear" id="verificar" />
+
+<input type="submit" value="Listar Sorteados" id="num_sorteados" />
+
+
+<script>
+var pulaLinha = function() {
+    document.write("<br>");
+};
+var mostra = function(frase) {
+    document.write(frase);
+    pulaLinha();
+};  
+var sorteados = []; 
+
+    var adicionarSorteado = function(){
+
+        var numero = Math.round(Math.random()*10); 
+
+        if(numero!=0){
+            for (var i = 0; i < sorteados.length; i++){ 
+                if(sorteados[i] == numero ){ 
+                   //alert("Numero já Sorteado   "+numero);
+                   //console.log("Número já sorteado"); 
+                   return; 
+                }
+            } 
+            sorteados.push(numero);
+            alert(numero);
+            console.log(sorteados);
+
+        }
+    };
+
+    var verify = function(){
+        pulaLinha();
+        pulaLinha();
+        mostra ("<strong> BINGO!!!!!  Os números sorteados foram: </strong>" + sorteados);
+        pulaLinha();
+        mostra("<strong>Favor conferir com a cartela premiada!</strong>");
+         var validar = prompt("A cartela foi validada?");
+            if(validar == "Sim"){
+            alert("Parabéns ao Ganhador!!!")
+            }
+        else{
+        alert("Ok, vamos continuar então...");
+        var numeroConfere = Math.round(Math.random()*10); 
+
+        if(numeroConfere!=0){
+            for (var j = sorteados.lenght; j < sorteados.length; j++){ 
+                if(sorteados[j] == numeroConfere ){ 
+                   alert("Numero já Sorteado   "+numeroConfere);
+                   console.log("Número já sorteado"); 
+
+                }
+            } 
+            sorteados.push(numeroConfere);
+            alert(numeroConfere);
+            console.log(sorteados);
+
+        }
+    }
+    }
+
+
+    var botao = document.getElementById("verificar"); 
+    botao.onclick = adicionarSorteado;
+
+    var verificar = document.getElementById("num_sorteados")
+    verificar.onclick = verify;
+</script>
